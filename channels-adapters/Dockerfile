@@ -5,7 +5,6 @@ LABEL version=0.1.0
 
 COPY . /usr/src/app
 
-RUN cd /usr/src/app/channels-adapters
 RUN  --mount=type=cache,target=/root/.m2 mvn --batch-mode \
   -f pom.xml \
   clean package \
@@ -19,7 +18,7 @@ ENV VAULT_SECRET=changeme
 ENV VAULT_URI=http://vault-service.management.svc.domain.local:8200
 
 WORKDIR /usr/app
-COPY --from=BUILD /usr/src/app/channels-adapters/target/channels-adapters.jar /usr/app/
+COPY --from=BUILD /usr/src/app/target/channels-adapters.jar /usr/app/
 
 EXPOSE ${PORT}
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar","/usr/app/channels-adapters.jar", "--spring.profiles.active=${APP_PROFILE}", "--spring.cloud.vault.token=${VAULT_SECRET}", "--spring.application.name=${APP_NAME}", "--spring.cloud.vault.uri=${VAULT_URI}", "--spring.config.location=file:///opt/config/"]
