@@ -18,6 +18,9 @@ public class RabbitMQConsumer {
     private NotificationService smsService;
 
     @Autowired
+    private NotificationService webhookService;
+
+    @Autowired
     private MeterRegistry meterRegistry;
 
     /**
@@ -54,5 +57,16 @@ public class RabbitMQConsumer {
             .commonTags("customer", Optional.ofNullable(message.getCustomerId()).orElse("-"));
         meterRegistry.counter("notificationservice.rabbitmq.messages").increment();;
         mailService.send(message);
+    }
+
+    @RabbitListener(queues = "${notification.webhook.queue}")
+    public void receiveMessageWebhook(NotificationMessage message) {
+        meterRegistry.config()
+			.commonTags("app", "messagingservice")
+			.commonTags("component","adapters")
+            .commonTags("channel", "webhook")            
+            .commonTags("customer", Optional.ofNullable(message.getCustomerId()).orElse("-"));
+        meterRegistry.counter("notificationservice.rabbitmq.messages").increment();;
+        webhookService.send(message);
     }
 }

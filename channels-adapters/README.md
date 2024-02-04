@@ -46,3 +46,24 @@ mvn spring-boot:run
   }
 }
 ```
+
+## Webhook
+
+```json
+{
+  "channel": "webhook",
+  "customerId": "C000199985",
+  "message": "Bienvenido a Caja Cusco",
+  "properties": {
+    "url": "https://httpbin.com/demo",
+    "security": {
+       "url": "https://SERVIDOR/auth/realms/REALM/protocol/openid-connect/token",
+       "username": "usuario",
+       "password": "CHANGEME",
+       "clientId": "aplicacion",
+       "clientSecret": "f4c6f94d-6077-4dce-850a-c9f1bd6291cb",
+       "grantType": "password"
+    }
+  }
+}
+```
