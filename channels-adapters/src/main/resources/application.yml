@@ -1,0 +1,53 @@
+
+spring:
+  #
+  # spring.rabbitmq.addresses=172.17.8.220
+  #
+  rabbitmq:
+    host: 172.17.8.220
+    password: admin
+    username: admin
+    virtual-host: default
+  #
+  # Mail Service
+  #
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ilver.anache@gmail.com
+    password: changeme
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+        debug: true
+
+notification:
+  exchange: default
+  #
+  # SME Settings
+  sms:
+    queue: queue.sms
+    routingkey: queue.sms
+  #
+  # Mail Settings
+  mail:
+    queue: queue.mail
+    routingkey: queue.mail
+  #
+  # Webhook Settings
+  webhook:
+    queue: queue.webhook
+    routingkey: queue.webhook
+  #
+  # WhatsApp Settings
+  whatsapp:
+    queue: queue.whatsapp
+    routingkey: queue.whatsapp
+  #
+  # Push Settings
+  push:
+    queue: queue.push
+    routingkey: queue.push
