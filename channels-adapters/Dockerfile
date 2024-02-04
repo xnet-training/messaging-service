@@ -5,10 +5,10 @@ LABEL version=0.1.0
 
 COPY . /usr/src/app
 
-RUN  --mount=type=cache,target=/root/.m2 mvn --batch-mode \
+RUN --mount=type=cache,target=/root/.m2 mvn --batch-mode \
   -f /usr/src/app/pom.xml \
-  clean package \
-  test $(find ./ -type f -name '*.jar' | wc -l) -eq 1
+  clean package
+RUN test $(find ./ -type f -name '*.jar' | wc -l) -eq 1
 
 FROM amazoncorretto:17
 ENV PORT ${PORT}
