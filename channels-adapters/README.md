@@ -10,7 +10,7 @@ Para probar el contenedor:
 
 ```sh
 docker run --rm \
-  -v "./src/resources/application.yml:/opt/config/application.yml" \
+  -v "./src/main/resources/application.yml:/opt/config/application.yml" \
   xnet/messaging_service-channelsadapters:0.1.0
 ```
 
