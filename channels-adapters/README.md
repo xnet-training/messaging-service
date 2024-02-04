@@ -1,6 +1,14 @@
 
+# Construir la imagen de contenedor
 
-# SMS
+```sh
+docker build . -t xnet/messaging_service-channelsadapters:0.1.0
+docker push xnet/messaging_service-channelsadapters:0.1.0
+```
+
+# Prueba del componente
+
+## SMS
 
 ```json
 {
@@ -13,7 +21,7 @@
 }
 ```
 
-# Mail
+## Mail
 
 ```json
 {

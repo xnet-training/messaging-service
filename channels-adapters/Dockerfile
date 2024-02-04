@@ -1,5 +1,5 @@
 ARG PORT=8080
-FROM maven:3.6.3-openjdk-15 as BUILD
+FROM maven:3.6.3-openjdk-17 as BUILD
 
 LABEL version=0.1.0
 
