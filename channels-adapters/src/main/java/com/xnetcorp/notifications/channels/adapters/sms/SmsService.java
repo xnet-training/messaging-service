@@ -3,6 +3,8 @@ package com.xnetcorp.notifications.channels.adapters.sms;
 import org.springframework.stereotype.Service;
 import com.xnetcorp.notifications.channels.adapters.NotificationMessage;
 import com.xnetcorp.notifications.channels.adapters.NotificationService;
+
+import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -13,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class SmsService implements NotificationService {
 
+    @Timed
     @Override
     public void send(NotificationMessage message) {
         log.info(message.toString());

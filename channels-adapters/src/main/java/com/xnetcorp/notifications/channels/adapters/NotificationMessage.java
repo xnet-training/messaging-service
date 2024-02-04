@@ -11,6 +11,10 @@ public class NotificationMessage {
      */
     private String id;
     /**
+     * Identificador del cliente de negocio
+     */
+    private String customerId;
+    /**
      * Nombre del canal de comunicación
      */
     private String channel;

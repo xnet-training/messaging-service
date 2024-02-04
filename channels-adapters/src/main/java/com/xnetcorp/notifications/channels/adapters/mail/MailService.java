@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.xnetcorp.notifications.channels.adapters.NotificationMessage;
 import com.xnetcorp.notifications.channels.adapters.NotificationService;
 
+import io.micrometer.core.annotation.Timed;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ public class MailService implements NotificationService {
     private JavaMailSender mailSender;
 
     @Override
+    @Timed
     public void send(NotificationMessage message) {
         log.info(message.toString());
         log.info("Enviando mensaje Mail '" + message.getMessage() + "' al correo " + message.getProperties().get("mail"));

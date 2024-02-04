@@ -14,6 +14,12 @@ docker run --rm \
   xnet/messaging_service-channelsadapters:0.1.0
 ```
 
+Ejecutar componente
+
+```sh
+mvn spring-boot:run
+```
+
 # Prueba del componente
 
 ## SMS
