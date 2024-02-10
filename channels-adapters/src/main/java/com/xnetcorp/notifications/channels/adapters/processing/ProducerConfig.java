@@ -3,6 +3,7 @@ package com.xnetcorp.notifications.channels.adapters.processing;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
+import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -32,9 +33,13 @@ public class ProducerConfig {
 	@Bean
     public VelocityEngine velocityEngine() {
         VelocityEngine velocityEngine = new VelocityEngine();
-        velocityEngine.setProperty(RuntimeConstants.RESOURCE_LOADER, "class");
-        velocityEngine.setProperty("resource.loader.class.class", ClasspathResourceLoader.class.getName());
-        return velocityEngine;
+        velocityEngine.setProperty(RuntimeConstants.RESOURCE_LOADER, "string");
+		velocityEngine.setProperty("resource.loader.string.class", StringResourceLoader.class.getName());
+		velocityEngine.setProperty("resource.loader.string.cache", true);
+		velocityEngine.setProperty("resource.loader.string.modification_check_interval", 60);
+        //velocityEngine.setProperty("resource.loader.class.class", ClasspathResourceLoader.class.getName());
+        //velocityEngine.init();
+		return velocityEngine;
     }
 
 }

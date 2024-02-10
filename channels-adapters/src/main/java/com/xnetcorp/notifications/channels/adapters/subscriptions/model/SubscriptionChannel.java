@@ -1,7 +1,7 @@
 package com.xnetcorp.notifications.channels.adapters.subscriptions.model;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import lombok.Builder;
 import lombok.Data;
@@ -14,10 +14,14 @@ public class SubscriptionChannel {
      * a través de cola en RabbitMQ.
      */
     private String chanelName;
+
     /**
      * Conjunto de propiedades específicas definidas por el dueño de la
      * subscription.
      */
     @Singular
-    private Map<String, Object> properties; // = new HashMap<>();
+    private Map<String, Object> properties; 
+
+    @Singular
+    private Set<String> ignoresProperties;
 }

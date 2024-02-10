@@ -37,7 +37,7 @@ public class MailService implements NotificationService {
             helper.setFrom(mailFrom);
             helper.setTo((String)message.getProperties().get("mail"));
             helper.setSubject((String)Optional.ofNullable(message.getProperties().get("subject")).orElse("Sin titulo"));
-            helper.setText(message.getMessage());
+            helper.setText(message.getMessage(), true);
 
             mailSender.send(msg);
 

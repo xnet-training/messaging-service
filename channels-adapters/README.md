@@ -39,7 +39,11 @@ git update-index --no-assume-unchanged src/main/resources/application.yml
   "eventType": "CreditoAprobado",
   "ownerId": 1234556,
   "payload": {
-    "message": "Mensaje a notificar"
+    "cuenta": "123455665435435435",
+    "moneda": "PEN",
+    "monto": 5000.00,
+    "cuotas": 640.0,
+    "plazo": 10
   }
 }
 ```

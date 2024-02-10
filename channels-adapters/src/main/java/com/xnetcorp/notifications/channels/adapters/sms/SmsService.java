@@ -19,7 +19,7 @@ public class SmsService implements NotificationService {
     @Override
     public void send(NotificationMessage message) {
         log.info(message.toString());
-        log.info(String.format("Enviando mensaje SMS '%s' al telefono %s", 
+        log.info(String.format("[SMS] Enviando mensaje SMS '%s' al telefono %s", 
             message.getMessage(), 
             message.getProperties().get("number"))
         );
