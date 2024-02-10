@@ -20,6 +20,16 @@ Ejecutar componente
 mvn spring-boot:run
 ```
 
+# Proteger archivos con datos sensibles previo a publicacion
+
+```sh
+git update-index --assume-unchanged src/main/resources/application.yml
+```
+
+```sh
+git update-index --no-assume-unchanged src/main/resources/application.yml
+```
+
 # Prueba del componente
 
 ## Mensaje del Evento de Negocio
