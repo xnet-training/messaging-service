@@ -67,39 +67,27 @@ public class WebhookService  implements NotificationService {
     }
 
     private String getTokenJwt(String authUrl, String clientId, String clientSecret, String credentialType, String username, String password ) {
-        //try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED.toString());
-            headers.add("Accept", MediaType.APPLICATION_JSON.toString());
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED.toString());
+        headers.add("Accept", MediaType.APPLICATION_JSON.toString());
 
-            MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
-            requestBody.add("client_id", clientId);
-            requestBody.add("client_secret", clientSecret);
-            requestBody.add("grant_type", credentialType);
-            requestBody.add("username", username);
-            requestBody.add("password", password);
+        MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
+        requestBody.add("client_id", clientId);
+        requestBody.add("client_secret", clientSecret);
+        requestBody.add("grant_type", credentialType);
+        requestBody.add("username", username);
+        requestBody.add("password", password);
 
-            HttpEntity<MultiValueMap<String,String>> request = new HttpEntity<>(requestBody, headers);
+        HttpEntity<MultiValueMap<String,String>> request = new HttpEntity<>(requestBody, headers);
 
-            ResponseEntity<Oauth2Response> response = this.restTemplate.postForEntity(authUrl, request, Oauth2Response.class);
-            String token = response.getBody().getAccess_token();
-            //ResponseEntity<String> response = this.restTemplate.postForEntity(authUrl, request, String.class);
-            log.info(response.getBody().toString());
-            //ObjectMapper mapper = new ObjectMapper();
-            //JSONObject jsonObject = mapper.readValue(response.getBody().replaceAll("\":\"","\": \""), JSONObject.class);
-            //log.info(jsonObject.toString());
-            //String token = "-"; //(String)jsonObject.get("access_token");
-            //log.info(String.format("Token JWT %s", token));
-            log.info(String.format("HTTP Status Code %d", response.getStatusCode().value()));
+        ResponseEntity<Oauth2Response> response = this.restTemplate.postForEntity(authUrl, request, Oauth2Response.class);
+        String token = response.getBody().getAccess_token();
+        //ResponseEntity<String> response = this.restTemplate.postForEntity(authUrl, request, String.class);
+        log.info(response.getBody().toString());
+        log.info(String.format("HTTP Status Code %d", response.getStatusCode().value()));
 
-            //log.info(response.getBody() != null ? response.getBody().toString() : "NULL");
-            //String token = ""; //response.getBody().getString("access_token");
-            log.info(String.format("Token JWT: %s", token));
-            return token;
-        //} catch(JsonProcessingException ex) {
-        //    log.error(ex.getMessage(), ex);
-        //    return null;
-        //}
+        log.info(String.format("Token JWT: %s", token));
+        return token;
     }
     
 }
