@@ -6,6 +6,9 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.xnetcorp.notifications.channels.adapters.processing.BusinessEventMessage;
+import com.xnetcorp.notifications.channels.adapters.processing.BusinessEventProcessingService;
+
 import io.micrometer.core.instrument.MeterRegistry;
 
 @Component
@@ -21,7 +24,24 @@ public class RabbitMQConsumer {
     private NotificationService webhookService;
 
     @Autowired
+    private BusinessEventProcessingService processingService;
+
+    @Autowired
     private MeterRegistry meterRegistry;
+
+    @RabbitListener(queues = "${notification.businessevent.queue}")
+    public void receiveMessageSms(BusinessEventMessage message) {
+        meterRegistry.config()
+			.commonTags("app", "messagingservice")
+			.commonTags("component","processor")
+            .commonTags("channel", "sms")
+            .commonTags("owner", Optional.ofNullable(message.getOwnerId()).orElse("-"));
+        meterRegistry.counter("notificationservice.rabbitmq.messages").increment();
+        this.meterRegistry.timer("notificationservice.businessevent.time").record(
+         ()-> {
+            this.processingService.execute(message);
+         });
+    }
 
     /**
      * Receptor de mensajes desde cola para envíos de SMS.

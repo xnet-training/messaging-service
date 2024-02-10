@@ -22,6 +22,18 @@ mvn spring-boot:run
 
 # Prueba del componente
 
+## Mensaje del Evento de Negocio
+
+```json
+{
+  "eventType": "CreditoAprobado",
+  "ownerId": 1234556,
+  "payload": {
+    "message": "Mensaje a notificar"
+  }
+}
+```
+
 ## SMS
 
 ```json

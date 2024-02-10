@@ -21,20 +21,25 @@ spring:
   # Mail Service
   #
   mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ilver.anache@gmail.com
-    password: changeme
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-        debug: true
+    host: "smtpout.secureserver.net"
+    port: 465
+    username: "ianache@crossnetcorp.com"
+    password: CHANGEME
+    protocol: smtp
+    properties.mail.smtp:
+      auth: true
+      ssl.enable: true
+      ssl.trust: "*"
+    #  mail.smtp.connectiontimeout: 5000
+    #  mail.smtp.timeout: 3000
+    #  mail.smtp.writetimeout: 5000
 
 notification:
   exchange: default
+  businessevent:
+    queue: queue.businessevent
+    routingkey: queue.businessevent
+
   #
   # SME Settings
   sms:
@@ -43,6 +48,7 @@ notification:
   #
   # Mail Settings
   mail:
+    from: ianache@crossnetcorp.com
     queue: queue.mail
     routingkey: queue.mail
   #
