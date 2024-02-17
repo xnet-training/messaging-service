@@ -150,6 +150,13 @@ Como resultado se debe obtener un resultado similar al siguiente:
 Created topic topic.businessevents.
 ```
 
+Recordar que se pueden aplicar otros parámetros al crear el tópico como por ejemplo:
+
+|Parámetro|Significado|
+|-|-|
+|--partitions|Cantidad de particiones en los que se divide un tópico|
+|--replication-factor|Cantidad de réplicas que se crean de las particiones| 
+
 ### Listar los tópicos
 
 Para listar los tópicos existentes se debe utilizar el siguiente comando:
