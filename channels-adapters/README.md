@@ -238,3 +238,21 @@ Un resultado posible, de acuerdo con los mensajes en tópico es el siguiente:
     }
 }
 ```
+
+## Producir mensajes en tópico
+
+**bin/kafka-console-producer.sh** `--topic` NOMBRE-TOPICO `--bootstrap-server` IP_DNS-SERVIDOR:9092
+
+Por ejemplo,
+
+```sh
+bin/kafka-console-producer.sh --topic cdc --bootstrap-server localhost:9092
+```
+
+> ante el comando anterior, kafka simplemente responde con el prompt **>** 
+
+Una vez enviado el mensaje hacia el tópico tenemos el siguiente resultado:
+
+```sh
+>{ "eventType": "LoanApproved","evendId": 123232323,"payload": {"cuenta": "123455665435435435","moneda": "PEN","monto": 3000.00,"cuotas": 640.0,"plazo": 10 }}
+```
