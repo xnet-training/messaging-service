@@ -94,13 +94,13 @@
 
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
+			<artifactId>velocity-engine-core</artifactId>
 		</dependency>
 				
-		<dependency>
+		<!--dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-tools</artifactId>
-		</dependency>
+		</dependency-->
 	</dependencies>
 
 	<dependencyManagement>
@@ -110,17 +110,21 @@
 				<artifactId>spring-kafka</artifactId>
 				<version>${spring-kafka.version}</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.apache.velocity</groupId>
-				<artifactId>velocity</artifactId>
-				<version>1.7</version>
+				<artifactId>velocity-engine-core</artifactId>
+				<version>2.3</version>
+				<!--artifactId>velocity</artifactId>
+				<version>1.7</version-->
 			</dependency>
 					
-			<dependency>
+			<!--dependency>
 				<groupId>org.apache.velocity</groupId>
 				<artifactId>velocity-tools</artifactId>
 				<version>2.0</version>
-			</dependency>
+			</dependency-->
+
 			<dependency>
 				<groupId>org.json</groupId>
 				<artifactId>json</artifactId>
