@@ -14,9 +14,17 @@ spring:
   #
   rabbitmq:
     host: 172.17.8.220
-    password: admin
-    username: admin
+    password: admin #7UmApoaOqhTWLUM9xGIpcym7cEFPkYSi5KzK
+    username: admin #root-a2617d51-c183-b1d1-5204-1f6d2ffd82dc
+    #username: admin
+    #password: admin
     virtual-host: default
+  kafka:
+    bootstrap-servers: "172.17.8.220:9092"
+    consumer:
+      bootstrap-servers: "172.17.8.220:9092"
+      group-id: "notifications"
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
   #
   # Mail Service
   #
@@ -39,6 +47,13 @@ notification:
   businessevent:
     queue: queue.businessevent
     routingkey: queue.businessevent
+  
+  kafka:
+    #topic: "partyreferencedata.partyreferencedata.tb_outbox"
+    topic: "topic.businessevents"
+    replication-factor: 1
+    partitions: 1
+    deadletter: "cdc.DL" 
 
   #
   # SME Settings
@@ -66,3 +81,10 @@ notification:
   push:
     queue: queue.push
     routingkey: queue.push
+
+kafka:
+  bootstrap-servers: "172.17.8.220:9092"
+  consumer:
+    bootstrap-servers: "172.17.8.220:9092"
+    group-id: "notifications"
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
