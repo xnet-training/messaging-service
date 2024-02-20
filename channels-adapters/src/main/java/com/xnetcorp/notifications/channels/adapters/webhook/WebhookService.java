@@ -2,10 +2,6 @@ package com.xnetcorp.notifications.channels.adapters.webhook;
 
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONObject;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,13 +11,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xnetcorp.notifications.channels.adapters.NotificationMessage;
 import com.xnetcorp.notifications.channels.adapters.NotificationService;
 
-import jakarta.mail.Multipart;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

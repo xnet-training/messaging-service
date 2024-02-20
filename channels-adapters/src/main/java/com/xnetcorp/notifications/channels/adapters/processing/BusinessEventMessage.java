@@ -2,9 +2,10 @@ package com.xnetcorp.notifications.channels.adapters.processing;
 
 import java.util.HashMap;
 
+import lombok.Builder;
 import lombok.Data;
 
-@Data
+@Data @Builder
 public class BusinessEventMessage {
     /**
      * Corresponde con el nombre de un evento de negocio registrado en el catalogo
